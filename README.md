@@ -9,7 +9,7 @@ You get 3 attempts to guess correctly!
 - You have 3 attempts to get it right.
 
 ## Play the Game Online
-👉 [Click here to play](https://vidhan2810.github.io/Guess-the-person/)
+👉 [Click here to play](https://vidhan2810.github.io/guess-the-person-game/)
 
 ## Technologies Used
 - HTML
