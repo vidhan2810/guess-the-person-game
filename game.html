@@ -6,102 +6,95 @@
             body{
                 background-color: black;
                 text-align: center;
-                background-image: url("https://i.pinimg.com/736x/3c/d1/22/3cd122e005bdfe0bc4d711823b5c4525.jpg");
+                background-image: url("https://i.pinimg.com/736x/78/e2/e7/78e2e734ea417d0b64c9bfb4e99f2335.jpg");
                 background-size: cover;
-            }
-            h1{
-                color:white;
-                font-size:22px;
-                font-family: monospace;
-                text-shadow: 3px 3px 5px black;
-            }
-            nav{
-                background:grey;
-                padding:1px 8%;
-                box-shadow: 3px 3px 6px black;
-                width:80%;
-                margin:auto;
-            }
-            .game{
-                background:linear-gradient(to right, rgb(103, 103, 103),rgb(45, 45, 45));
-                color:white;
-                padding:20px;
-                box-shadow: 3px 3px 3px black;
-                margin:20px auto;
-                width:80%;
-            }
-            .game ul{
-                text-align: left;
-                font-size: 20px;
-                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-                text-shadow: 1px 1px 5px black;
+                font-family: fantasy;
             }
             .guess{
-                background:linear-gradient(to right, rgb(103, 103, 103),rgb(45, 45, 45));
-                padding:19px;
-                margin-top:20px;
-                box-shadow: 3px 3px 3px black;
-                margin:auto;
-                width:80%;
+              background: rgba(255,255,255,0.9); /* white with slight transparency */
+              width: 80%;        /* not full width, leaves background visible */
+              height: 80%;       /* not full height */
+              margin: auto;      /* centers the box */
+              padding: 40px;     /* space inside the box */
+              border-radius: 6px; /* rounded corners */
+              box-shadow: 0 0 20px rgba(0,0,0,0.5); 
+              margin-top: 20px;
+              font-family: fantasy;
             }
             #hint{
                 text-align: left;
-                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                font-family: fantasy;
                 color:white;
+                background-color: rgb(61, 108, 147);
             }
-            h2,h3,h4{
+            h3{
                 font-family: Verdana, Geneva, Tahoma, sans-serif;
                 color:white;
-                text-shadow: 3px 3px 3px black;
+                text-shadow: 3px 3px 7px black;
+                background-color: rgb(236, 205, 48);
+                padding: 15px 20px;
+                box-shadow: 0 0 15px black;
+                border-radius: 6px;
+                font-family: fantasy;
+                letter-spacing: 3%;
+            }
+            h4{
+                background-color: rgb(213, 72, 56);
+                padding: 15px 20px;
+                box-shadow: 0 0 15px black;
+                border-radius: 6px;
+                text-shadow: 3px 3px 7px black;
+                color: white;
+                letter-spacing: 4%;
+                font-size: larger;
             }
             .guess ol{
-                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                font-family: fantasy;
                 font-size: 20px;
                 text-shadow: 1px 1px 5px black;
+                padding: 5px 15px;
             }
             input::placeholder{
                 font-size: 15px;
                 text-align: left;
+                border: none;
             }
             button{
-                padding: 7px 30px;
+                padding: 10px 20px;
                 font-size: 15px;
-                box-shadow: 3px 3px 7px black;
+                box-shadow: 0 0 15px black;
+                border-radius: 6px;
+                cursor: pointer;
+                transition: background 0.3s;
+                border: none;
             }
             input{
-                padding:10px 30px;
-                box-shadow: 3px 3px 7px black
+                padding:10px 20px;
+                box-shadow: 0 0 15px black
             }
             img{
                 width:200px;
                 float:center;
                 box-shadow: 2px 4px 5px grey;
             }
+            button:hover {
+                background: grey;
+                transform: scale(1.1);
+            }
         </style>
     </head>
     <body>
-        <nav>
-            <h1>Welcome to the <u>"Guess the Person"</u> Game</h1>
-        </nav>
-        <section class="game">
-            <h2>The Rules Are Simple</h2>
-            <ul>
-                <li>There will be total of 5 hints!!</li>
-                <li>Total 3 attemps to guess the person correctly</li>
-                <li>Use your knowledge and guess the person</li>
-            </ul>
-        </section>
         <section class="guess">
-            <h3>Click 'Next' to get next hint!</h3>
+            <h3>Click 'Next Hint' to get a new clue!</h3>
             <h4>(Refresh for the new person)</h4>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR3-qX8yavJACpOwDmoQClAB0Yr9rviqsUcCvT50HJdw&s=10">
             <ol id="hint"></ol>
-            <button onclick="showNextHint()">Next</button>
+            <button onclick="showNextHint()">Next Hint</button>
             <br><br>
             <input type="text" id="guessInput" placeholder="Enter your guess">
             <br><br>
             <button onclick="checkGuess()">Submit Guess</button>
-
+            <p id="message"></p>
         </section>
         <script>
         
@@ -199,7 +192,7 @@ const people = [
     {
     name: "Rahul Gandhi",
     hints: [
-      "Everyone asks me mummy kesi hai",
+      "Everyone asks me 'mummy kesi hai'",
       "Haq se single",
       "Winning isn't everything",
       "I'm not the life of the party I'm the death of the party",
@@ -214,6 +207,36 @@ const people = [
       "I blame all my failures on past leaders",
       "I have very passionate fanbase",
       "I despise liberals and intellectuals"
+    ]
+  },
+  {
+    name: "Mahatma gandhi",
+    hints: [
+      "I love long walks on the beach",
+      "I have a high thread count",
+      "I am the original salt bae",
+      "I conducted many social experiments",
+      "I was one of the first people to try intermittent fasting"
+    ]
+  },
+   {
+    name: "Jawaharwal Lal Nehru",
+    hints: [
+      "White chicks love me",
+      "I walk english I talk english I even drink english",
+      "I love kids but not like Michael Jackson",
+      "My legacy lives on in Fab India",
+      "Even I can't beleive how bad my future generattions are"
+    ]
+  },
+   {
+    name: "Mohammad Ali Jinnah",
+    hints: [
+      "I am the reason you enjoyed Asia Cup",
+      "I want Patiala but not its peg",
+      "I always supported minorities",
+      "Everyone calls me green flag",
+      "I was potrayed by British actor in my biopic"
     ]
   },
   {
@@ -246,14 +269,18 @@ function showNextHint() {
 // Function to check guess
 function checkGuess() {
   let guess = document.getElementById("guessInput").value;
+  let messageBox = document.getElementById("message");
   if (guess.toLowerCase() === chosenPerson.name.toLowerCase()) {
-    alert("Correct! You guessed the person!");
-  } else {
+    messageBox.textContent = "✅ Correct! You guessed the person!";
+    messageBox.style.color = "green";  } 
+    else {
     attempts--;
     if (attempts > 0) {
-      alert("Wrong guess! Attempts left: " + attempts);
+      messageBox.textContent = "❌ Wrong guess! Attempts left: " + attempts;
+      messageBox.style.color = "red";
     } else {
-      alert("Game Over! The person was " + chosenPerson.name);
+      messageBox.textContent = "💀 Game Over! The person was " + chosenPerson.name;
+      messageBox.style.color = "darkred";
     }
   }
 }
